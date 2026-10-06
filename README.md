@@ -44,9 +44,7 @@ $$p = \sigma(x^\top \beta) = \frac{1}{1+e^{-x^\top\beta}}.$$
 
 Equivalently, the log-odds are modeled linearly:
 
-$$\log\left(\frac{p}{1-p}\right)
-=
-x^\top\beta.$$
+$$\log\left(\frac{p}{1-p}\right) = x^\top\beta.$$
 
 The project specification uses logistic regression as a motivating
 example before introducing Gamma Regression.
@@ -66,15 +64,11 @@ is:
 
 The model assumes
 
-$$Y \sim \operatorname{Gamma}(\nu,\lambda),$$
+$$Y \sim \{Gamma}(\nu,\lambda),$$
 
 where the Gamma density is given by
 
-$$f_Y(y)
-=
-\frac{\lambda^\nu}{\Gamma(\nu)}
-y^{\nu-1}e^{-\lambda y},
-\qquad y\geq 0.$$
+$$f_Y(y) = \frac{\lambda^\nu}{\Gamma(\nu)}y^{\nu-1}e^{-\lambda y}, \qquad y\geq 0.$$
 
 The expected value and variance are
 
