@@ -76,7 +76,7 @@ $$E[Y] = \frac{\nu}{\lambda} = \mu,$$
 
 and
 
-$$\operatorname{Var}(Y) = \frac{\nu}{\lambda^2}.$$
+$$\{Var}(Y) = \frac{\nu}{\lambda^2}.$$
 
 Using
 
@@ -254,9 +254,8 @@ The following criteria are considered:
 
 The Root Mean Squared Error is defined as
 
-$$\operatorname{RMSE}
-=
-\sqrt{
+$$\{RMSE}
+=\sqrt{
 \frac{1}{n}
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
@@ -312,8 +311,7 @@ $$\boxed{
 The margin is related to the norm of the weight vector by
 
 $$\text{Margin}
-=
-\frac{2}{\|w\|}.$$
+=\frac{2}{\|w\|}.$$
 
 Therefore, minimizing $\frac12\|w\|^2$ maximizes the separation margin.
 
@@ -368,9 +366,7 @@ transformed feature vectors.
 
 A kernel function can be written as
 
-$$K(x_i,x_j)
-=
-\phi(x_i)^\top\phi(x_j),$$
+$$K(x_i,x_j) =\phi(x_i)^\top\phi(x_j),$$
 
 where $\phi(\cdot)$ is a feature mapping.
 
@@ -393,15 +389,12 @@ $$\boxed{
 \begin{aligned}
 \max_{\alpha}\quad
 &
-\sum_{i=1}^{n}\alpha_i
--
+\sum_{i=1}^{n}\alpha_i-
 \frac{1}{2}
 \sum_{i=1}^{n}
 \sum_{j=1}^{n}
 \alpha_i\alpha_j
-y_i y_j
-K(x_i,x_j)
-\\
+y_i y_jK(x_i,x_j)\\
 \text{subject to}\quad
 &
 \alpha_i\geq0,
@@ -467,30 +460,24 @@ The SVM models are evaluated using the following classification metrics.
 ## Accuracy
 
 $$\operatorname{Accuracy}
-=
-\frac{TP+TN}
+=\frac{TP+TN}
 {TP+TN+FP+FN}.$$
 
 ## Precision
 
 $$\operatorname{Precision}
-=
-\frac{TP}
+=\frac{TP}
 {TP+FP}.$$
 
 ## Recall
 
 $$\operatorname{Recall}
-=
-\frac{TP}
+=\frac{TP}
 {TP+FN}.$$
 
 ## F1-Score
 
-$$F_1
-=
-2
-\frac{
+$$F_1=2\frac{
 \operatorname{Precision}
 \cdot
 \operatorname{Recall}
@@ -631,7 +618,7 @@ result files.
 
 - **Author:** Mohammad Shahinfar
 
-# Author {#author .unnumbered}
+# Author
 
 **Mohammad Shahinfar**
 
