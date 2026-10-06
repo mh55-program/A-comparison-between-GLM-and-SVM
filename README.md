@@ -72,17 +72,11 @@ $$f_Y(y) = \frac{\lambda^\nu}{\Gamma(\nu)}y^{\nu-1}e^{-\lambda y}, \qquad y\geq 
 
 The expected value and variance are
 
-$$E[Y]
-=
-\frac{\nu}{\lambda}
-=
-\mu,$$
+$$E[Y] = \frac{\nu}{\lambda} = \mu,$$
 
 and
 
-$$\operatorname{Var}(Y)
-=
-\frac{\nu}{\lambda^2}.$$
+$$\operatorname{Var}(Y) = \frac{\nu}{\lambda^2}.$$
 
 Using
 
@@ -90,13 +84,11 @@ $$\mu=\frac{\nu}{\lambda},$$
 
 the variance can be written as
 
-$$\operatorname{Var}(Y)
-=
-\mu^2\frac{1}{\nu}.$$
+$$\{Var}(Y) = \mu^2\frac{1}{\nu}.$$
 
 Thus,
 
-$$\operatorname{Var}(Y)=\sigma^2\mu^2,$$
+$$\{Var}(Y)=\sigma^2\mu^2,$$
 
 where
 
@@ -106,15 +98,11 @@ $$\sigma^2=\frac{1}{\nu}.$$
 
 The Gamma regression model uses the logarithmic link function:
 
-$$\log(\mu_i)
-=
-x_i^\top\beta.$$
+$$\log(\mu_i) = x_i^\top\beta.$$
 
 Therefore,
 
-$$\mu_i
-=
-\exp(x_i^\top\beta).$$
+$$\mu_i = \exp(x_i^\top\beta).$$
 
 This guarantees that the predicted mean remains positive.
 
@@ -122,35 +110,27 @@ This guarantees that the predicted mean remains positive.
 
 Suppose we have $n$ independent observations
 
-$$(x_1,y_1),\ldots,(x_n,y_n),$$
+$$(x_1,y_1), \ldots, (x_n,y_n),$$
 
 where
 
-$$Y_i\sim\operatorname{Gamma}(\nu,\lambda_i).$$
+$$Y_i\sim\{Gamma}(\nu,\lambda_i).$$
 
 The mean is
 
-$$\mu_i
-=
-E[Y_i]
-=
-\frac{\nu}{\lambda_i}.$$
+$$\mu_i = E[Y_i] = \frac{\nu}{\lambda_i}.$$
 
 Using the log-link,
 
-$$\log(\mu_i)=x_i^\top\beta.$$
+$$\log(\mu_i) = x_i^\top\beta.$$
 
 The likelihood of the observed dataset is
 
-$$L(\beta)
-=
-\prod_{i=1}^{n}f_Y(y_i).$$
+$$L(\beta) = \prod_{i=1}^{n}f_Y(y_i).$$
 
 The log-likelihood is
 
-$$\ell(\beta)
-=
-\log L(\beta).$$
+$$\ell(\beta) = \log L(\beta).$$
 
 After removing terms that do not depend on $\beta$, the corresponding
 Negative Log-Likelihood (NLL) becomes the objective function to be
@@ -158,10 +138,7 @@ minimized.
 
 The optimization problem can therefore be written as
 
-$$\hat{\beta}
-=
-\arg\min_{\beta}
-\operatorname{NLL}(\beta).$$
+$$\hat{\beta} = \arg\min_{\beta}\{NLL}(\beta).$$
 
 The project also requires showing that the resulting objective is convex
 in $\beta$.
@@ -201,11 +178,7 @@ Gradient Descent is implemented manually.
 
 The generic update rule is
 
-$$\beta^{(k+1)}
-=
-\beta^{(k)}
--
-\eta_k\nabla f(\beta^{(k)}),$$
+$$\beta^{(k+1)} = \beta^{(k)} - \eta_k\nabla f(\beta^{(k)}),$$
 
 where
 
@@ -224,11 +197,7 @@ Newton--Raphson optimization is also implemented manually.
 
 The update rule is
 
-$$\beta^{(k+1)}
-=
-\beta^{(k)}
--
-\left[
+$$\beta^{(k+1)} = \beta^{(k)} - \left[
 \nabla^2 f(\beta^{(k)})
 \right]^{-1}
 \nabla f(\beta^{(k)}),$$
