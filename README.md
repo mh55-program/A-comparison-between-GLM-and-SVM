@@ -1,9 +1,7 @@
-::: center
 **Nonlinear Programming**\
 Gamma Regression and Support Vector Machines\
 Faculty of Mathematics, Statistics, and Computer Science\
 **Mohammad Shahinfar**
-:::
 
 # Overview
 
@@ -38,7 +36,7 @@ structure of the response variable.
 
 For example, logistic regression models a binary response:
 
-$$Y \sim \operatorname{Bernoulli}(p).$$
+$$Y \sim \{Bernoulli}(p).$$
 
 The probability $p$ is modeled using the logistic (sigmoid) function:
 
