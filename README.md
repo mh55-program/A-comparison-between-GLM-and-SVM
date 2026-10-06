@@ -1,12 +1,11 @@
 ::: center
 **Nonlinear Programming**\
 Gamma Regression and Support Vector Machines\
-**NLPCA2**\
 Faculty of Mathematics, Statistics, and Computer Science\
 **Mohammad Shahinfar**
 :::
 
-# Overview {#overview .unnumbered}
+# Overview
 
 This repository contains the implementation and analysis of a project
 for the **Nonlinear Programming** course.
@@ -691,7 +690,7 @@ Areas of interest:
 
 - Numerical Methods
 
-# Note {#note .unnumbered}
+# Note
 
 This repository contains an academic implementation of statistical and
 machine-learning optimization methods. The primary emphasis is on
