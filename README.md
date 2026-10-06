@@ -40,9 +40,7 @@ $$Y \sim \{Bernoulli}(p).$$
 
 The probability $p$ is modeled using the logistic (sigmoid) function:
 
-$$p = \sigma(x^\top \beta)
-=
-\frac{1}{1+e^{-x^\top\beta}}.$$
+$$p = \sigma(x^\top \beta) = \frac{1}{1+e^{-x^\top\beta}}.$$
 
 Equivalently, the log-odds are modeled linearly:
 
