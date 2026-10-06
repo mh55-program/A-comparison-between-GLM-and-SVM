@@ -459,32 +459,32 @@ The SVM models are evaluated using the following classification metrics.
 
 ## Accuracy
 
-$$\operatorname{Accuracy}
+$$\{Accuracy}
 =\frac{TP+TN}
 {TP+TN+FP+FN}.$$
 
 ## Precision
 
-$$\operatorname{Precision}
+$$\{Precision}
 =\frac{TP}
 {TP+FP}.$$
 
 ## Recall
 
-$$\operatorname{Recall}
+$$\{Recall}
 =\frac{TP}
 {TP+FN}.$$
 
 ## F1-Score
 
 $$F_1=2\frac{
-\operatorname{Precision}
+\{Precision}
 \cdot
-\operatorname{Recall}
+\{Recall}
 }{
-\operatorname{Precision}
+\{Precision}
 +
-\operatorname{Recall}
+\{Recall}
 }.$$
 
 A Logistic Regression model is also trained on the same dataset and used
