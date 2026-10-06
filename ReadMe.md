@@ -5,29 +5,26 @@
 **NLPCA2**
 **Faculty of Mathematics, Statistics, and Computer Science**
 
-**Author:** Mohammad Shahinfar
+**Mohammad Shahinfar**
 
 ---
 
 ## Overview
 
-This repository contains the implementation and analysis of a project for the **Nonlinear Programming** course.
+This repository contains the implementation and analysis of a project
+for the **Nonlinear Programming** course.
 
-The project studies two important optimization-based statistical and machine-learning problems:
+The project studies two important optimization-based statistical and
+machine-learning problems:
 
 1. **Gamma Regression**
 2. **Support Vector Machines (SVMs)**
 
-The main objective is to connect the mathematical formulation of statistical learning problems with practical optimization algorithms.
-
-The project includes:
-
-* Mathematical derivations
-* Convexity analysis
-* Manual implementations of numerical optimization methods
-* Convex optimization using CVXPY
-* Comparisons with established Python libraries
-* Statistical and machine-learning model evaluation
+The main objective is to connect the mathematical formulation of
+statistical learning problems with practical optimization algorithms.
+The project includes mathematical derivations, convexity analysis,
+manual implementations of numerical optimization methods, and
+comparisons with established Python libraries.
 
 ---
 
@@ -35,11 +32,14 @@ The project includes:
 
 ## Generalized Linear Models
 
-Generalized Linear Models (GLMs) extend ordinary linear regression to response variables that follow non-normal probability distributions.
+Generalized Linear Models (GLMs) extend ordinary linear regression to
+response variables that follow non-normal probability distributions.
 
-A GLM relates the expected response $\mu$ to a linear combination of the explanatory variables through an appropriate link function.
+A GLM relates the expected response \(\mu\) to a linear combination of
+the explanatory variables through an appropriate link function.
 
-Different distributions and link functions can be used depending on the structure of the response variable.
+Different distributions and link functions can be used depending on
+the structure of the response variable.
 
 For example, logistic regression models a binary response:
 
@@ -47,7 +47,7 @@ $$
 Y \sim \operatorname{Bernoulli}(p).
 $$
 
-The probability $p$ is modeled using the logistic (sigmoid) function:
+The probability \(p\) is modeled using the logistic (sigmoid) function:
 
 $$
 p = \sigma(x^\top \beta)
@@ -63,18 +63,21 @@ $$
 x^\top\beta.
 $$
 
-The project specification uses logistic regression as a motivating example before introducing Gamma Regression.
+The project specification uses logistic regression as a motivating
+example before introducing Gamma Regression.
 
 ---
 
 ## Gamma Regression
 
-Gamma Regression is appropriate for modeling a response variable that is:
+Gamma Regression is appropriate for modeling a response variable that
+is:
 
 * strictly positive,
 * continuous,
 * right-skewed,
-* and potentially characterized by variance increasing with the mean.
+* and potentially characterized by variance increasing with
+  the mean.
 
 The model assumes
 
@@ -162,7 +165,7 @@ This guarantees that the predicted mean remains positive.
 
 ## Likelihood
 
-Suppose we have $n$ independent observations
+Suppose we have \(n\) independent observations
 
 $$
 (x_1,y_1),\ldots,(x_n,y_n),
@@ -206,7 +209,9 @@ $$
 \log L(\beta).
 $$
 
-After removing terms that do not depend on $\beta$, the corresponding Negative Log-Likelihood (NLL) becomes the objective function to be minimized.
+After removing terms that do not depend on \(\beta\), the corresponding
+Negative Log-Likelihood (NLL) becomes the objective function to be
+minimized.
 
 The optimization problem can therefore be written as
 
@@ -217,23 +222,26 @@ $$
 \operatorname{NLL}(\beta).
 $$
 
-The project also requires showing that the resulting objective is convex in $\beta$.
+The project also requires showing that the resulting objective is
+convex in \(\beta\).
 
 ---
 
 ## Exploratory Data Analysis
 
-Before fitting the Gamma regression model, exploratory data analysis is performed.
+Before fitting the Gamma regression model, exploratory data analysis
+is performed.
 
 The analysis includes:
 
-* Histogram or KDE of the response variable $Y$
-* Scatter plots of $Y$ against each predictor
-* Investigation of positivity and right-skewness
-* Investigation of whether the variance increases with the mean
-* Investigation of nonlinear or multiplicative relationships
+* Histogram or KDE of the response variable \(Y\).
+* Scatter plots of \(Y\) against each predictor.
+* Investigation of positivity and right-skewness.
+* Investigation of whether the variance increases with the mean.
+* Investigation of nonlinear or multiplicative relationships.
 
-These observations help explain why Ordinary Least Squares (OLS) may not be appropriate for the dataset.
+These observations help explain why Ordinary Least Squares (OLS) may
+not be appropriate for the dataset.
 
 ---
 
@@ -243,7 +251,8 @@ Three optimization approaches are implemented.
 
 ### 1. Convex Optimization with CVXPY
 
-The Gamma regression NLL is formulated as a convex optimization problem and solved using `CVXPY`.
+The Gamma regression NLL is formulated as a convex optimization problem
+and solved using `CVXPY`.
 
 ### 2. Gradient Descent
 
@@ -259,13 +268,14 @@ $$
 \eta_k\nabla f(\beta^{(k)}),
 $$
 
-where:
+where
 
-* $\beta^{(k)}$ is the parameter vector at iteration $k$,
-* $\eta_k$ is the learning rate,
-* $\nabla f(\beta^{(k)})$ is the gradient of the objective.
+* \(\beta^{(k)}\) is the parameter vector at iteration \(k\),
+* \(\eta_k\) is the learning rate,
+* \(\nabla f(\beta^{(k)})\) is the gradient of the objective.
 
-The implementation includes an appropriate learning-rate strategy and stopping criterion.
+The implementation includes an appropriate learning-rate strategy and
+stopping criterion.
 
 ### 3. Newton--Raphson Method
 
@@ -298,15 +308,18 @@ $$
 
 is the Hessian matrix of the objective function.
 
-The project requires both Gradient Descent and Newton--Raphson to be implemented without using pre-built optimization solvers. NumPy may be used for matrix operations.
+The project requires both Gradient Descent and Newton--Raphson to be
+implemented without using pre-built optimization solvers. NumPy may
+be used for matrix operations.
 
 ---
 
 ## Statsmodels Comparison
 
-The manually implemented methods are compared with the Gamma GLM implementation provided by `statsmodels`.
+The manually implemented methods are compared with the Gamma GLM
+implementation provided by `statsmodels`.
 
-The reference model is specified as:
+The reference model is specified as
 
 ```python
 import statsmodels.api as sm
@@ -322,17 +335,19 @@ model = sm.GLM(
 result = model.fit()
 ```
 
-The estimated coefficients are compared across the different approaches.
+The estimated coefficients are compared across the different
+approaches.
 
 ---
 
 ## Gamma Regression Evaluation
 
-A 10-fold cross-validation procedure is used to evaluate and compare the different methods.
+A 10-fold cross-validation procedure is used to evaluate and compare
+the different methods.
 
 The following criteria are considered:
 
-* Adjusted $R^2$
+* Adjusted \(R^2\)
 * Root Mean Squared Error (RMSE)
 * Computation time
 
@@ -348,7 +363,8 @@ $$
 }.
 $$
 
-Adjusted $R^2$ is custom-computed for the project since it is not directly provided by the GLM implementation in the required form.
+Adjusted \(R^2\) is custom-computed for the project since it is not
+directly provided by the GLM implementation in the required form.
 
 ---
 
@@ -356,7 +372,8 @@ Adjusted $R^2$ is custom-computed for the project since it is not directly provi
 
 ## Overview
 
-Support Vector Machines (SVMs) are optimization-based classification methods that seek a separating hyperplane with a large margin.
+Support Vector Machines (SVMs) are optimization-based classification
+methods that seek a separating hyperplane with a large margin.
 
 For a linear classifier,
 
@@ -381,13 +398,15 @@ y_i(w^\top x_i+b)\geq 1,
 \forall i.
 $$
 
-The objective is convex and the constraints are linear, making this a convex optimization problem.
+The objective is convex and the constraints are linear, making this a
+convex optimization problem.
 
 ---
 
 ## Hard-Margin SVM
 
-The Hard-Margin SVM assumes that the training data is perfectly linearly separable.
+The Hard-Margin SVM assumes that the training data is perfectly
+linearly separable.
 
 The optimization problem is
 
@@ -411,13 +430,15 @@ $$
 \frac{2}{\|w\|}.
 $$
 
-Therefore, minimizing $\frac12|w|^2$ maximizes the separation margin.
+Therefore, minimizing \(\frac12\|w\|^2\) maximizes the separation
+margin.
 
 ---
 
 ## Soft-Margin SVM
 
-Perfect linear separability is not always possible in practical datasets.
+Perfect linear separability is not always possible in practical
+datasets.
 
 The Soft-Margin formulation introduces slack variables
 
@@ -451,17 +472,23 @@ y_i(w^\top x_i+b)
 }
 $$
 
-The parameter $C$ controls the trade-off between maximizing the margin and penalizing classification/margin violations.
+The parameter \(C\) controls the trade-off between maximizing the
+margin and penalizing classification/margin violations.
 
-A larger $C$ places more emphasis on correctly classifying training observations, whereas a smaller $C$ allows more violations in exchange for a potentially simpler decision boundary.
+A larger \(C\) places more emphasis on correctly classifying training
+observations, whereas a smaller \(C\) allows more violations in
+exchange for a potentially simpler decision boundary.
 
 ---
 
 ## Kernel SVM
 
-A linear hyperplane may fail when the classes are not linearly separable in the original feature space.
+A linear hyperplane may fail when the classes are not linearly
+separable in the original feature space.
 
-The **kernel trick** allows the SVM to implicitly operate in a higher-dimensional feature space without explicitly computing the transformed feature vectors.
+The **kernel trick** allows the SVM to implicitly operate in a
+higher-dimensional feature space without explicitly computing the
+transformed feature vectors.
 
 A kernel function can be written as
 
@@ -471,7 +498,7 @@ K(x_i,x_j)
 \phi(x_i)^\top\phi(x_j),
 $$
 
-where $\phi(\cdot)$ is a feature mapping.
+where \(\phi(\cdot)\) is a feature mapping.
 
 Common kernel functions include:
 
@@ -480,7 +507,8 @@ Common kernel functions include:
 * Radial Basis Function (RBF) kernel
 * Sigmoid kernel
 
-In the dual formulation, the optimization problem can be expressed in terms of the kernel matrix.
+In the dual formulation, the optimization problem can be expressed
+in terms of the kernel matrix.
 
 For example, the Hard-Margin SVM dual has the form
 
@@ -508,24 +536,27 @@ K(x_i,x_j)
 }
 $$
 
-This formulation demonstrates how the kernel function replaces the explicit inner products between transformed feature vectors.
+This formulation demonstrates how the kernel function replaces the
+explicit inner products between transformed feature vectors.
 
 ---
 
 ## Regularization
 
-Regularization is used to reduce overfitting and control model complexity.
+Regularization is used to reduce overfitting and control model
+complexity.
 
-For Soft-Margin SVM, the regularization parameter $C$ determines the relative importance of margin violations.
+For Soft-Margin SVM, the regularization parameter \(C\) determines the
+relative importance of margin violations.
 
-The project investigates how changing $C$ affects:
+The project investigates how changing \(C\) affects:
 
-* The learned decision boundary
-* Model complexity
-* Training performance
-* Generalization performance
+* The learned decision boundary.
+* Model complexity.
+* Training performance.
+* Generalization performance.
 
-The project also includes tuning $C$ as an optional bonus task.
+The project also includes tuning \(C\) as an optional bonus task.
 
 ---
 
@@ -541,19 +572,24 @@ For each model, two implementations are considered.
 
 ## CVXPY Implementation
 
-The corresponding convex optimization problem is formulated directly using `CVXPY`.
+The corresponding convex optimization problem is formulated directly
+using `CVXPY`.
 
 ## Scikit-Learn Implementation
 
-The same models are implemented using established machine-learning tools from `scikit-learn`.
+The same models are implemented using established machine-learning
+tools from `scikit-learn`.
 
-The two approaches are compared to investigate the relationship between the mathematical optimization formulation and standard machine-learning implementations.
+The two approaches are compared to investigate the relationship
+between the mathematical optimization formulation and standard
+machine-learning implementations.
 
 ---
 
 # SVM Evaluation
 
-The SVM models are evaluated using the following classification metrics.
+The SVM models are evaluated using the following classification
+metrics.
 
 ## Accuracy
 
@@ -599,13 +635,15 @@ F_1
 }.
 $$
 
-A Logistic Regression model is also trained on the same dataset and used as a baseline for comparison.
+A Logistic Regression model is also trained on the same dataset and
+used as a baseline for comparison.
 
 ---
 
 # Technologies
 
-The project is implemented in Python using the following tools and libraries:
+The project is implemented in Python using the following tools and
+libraries:
 
 * Python
 * NumPy
@@ -621,13 +659,15 @@ The project is implemented in Python using the following tools and libraries:
 
 The main objectives of this project are:
 
-1. Formulate statistical learning problems as optimization problems.
+1. Formulate statistical learning problems as optimization
+   problems.
 2. Derive likelihood-based objective functions.
 3. Analyze convexity of optimization objectives.
 4. Implement numerical optimization algorithms manually.
 5. Solve convex optimization problems using CVXPY.
 6. Compare custom implementations with established libraries.
-7. Evaluate models using appropriate statistical and machine-learning metrics.
+7. Evaluate models using appropriate statistical and machine
+   learning metrics.
 8. Investigate the effect of regularization on SVM performance.
 
 ---
@@ -638,37 +678,39 @@ A possible repository organization is:
 
 ```text
 Nonlinear-Programming/
-│
-├── README.md
-│
-├── data/
-│   ├── gamma.csv
-│   └── svm.csv
-│
-├── notebooks/
-│   ├── gamma_regression.ipynb
-│   └── svm.ipynb
-│
-├── src/
-│   ├── gamma_regression.py
-│   ├── gradient_descent.py
-│   ├── newton_raphson.py
-│   ├── hard_margin_svm.py
-│   ├── soft_margin_svm.py
-│   └── kernel_svm.py
-│
-├── results/
-│   ├── figures/
-│   └── tables/
-│
-└── requirements.txt
+|
+|-- README.md
+|
+|-- data/
+|   |-- gamma.csv
+|   `-- svm.csv
+|
+|-- notebooks/
+|   |-- gamma_regression.ipynb
+|   `-- svm.ipynb
+|
+|-- src/
+|   |-- gamma_regression.py
+|   |-- gradient_descent.py
+|   |-- newton_raphson.py
+|   |-- hard_margin_svm.py
+|   |-- soft_margin_svm.py
+|   `-- kernel_svm.py
+|
+|-- results/
+|   |-- figures/
+|   `-- tables/
+|
+`-- requirements.txt
 ```
 
 ---
 
 # Results
 
-The final experimental results compare the different optimization approaches according to their predictive performance and computational efficiency.
+The final experimental results compare the different optimization
+approaches according to their predictive performance and computational
+efficiency.
 
 For Gamma Regression, the main comparison is between:
 
@@ -716,7 +758,9 @@ $$
 F_1\text{-Score}.
 $$
 
-The actual numerical results, plots, convergence behavior, and comparative analysis are provided in the corresponding notebooks and result files.
+The actual numerical results, plots, convergence behavior, and
+comparative analysis are provided in the corresponding notebooks and
+result files.
 
 ---
 
@@ -733,9 +777,9 @@ The actual numerical results, plots, convergence behavior, and comparative analy
 
 **Mohammad Shahinfar**
 
-Statistics — Data Science
+Statistics -- Data Science
 
-### Areas of Interest
+### Areas of interest
 
 * Statistical Modeling
 * Data Science
@@ -747,7 +791,7 @@ Statistics — Data Science
 
 # Note
 
-This repository contains an academic implementation of statistical and machine-learning optimization methods.
-
-The primary emphasis is on understanding the mathematical formulation, numerical optimization, and empirical comparison of the methods.
-
+This repository contains an academic implementation of statistical
+and machine-learning optimization methods. The primary emphasis is on
+understanding the mathematical formulation, numerical optimization,
+and empirical comparison of the methods.
